@@ -23,15 +23,16 @@ class _MainActivityState extends State<MainActivity> {
         appBar: AppBar(
             elevation: 5,
             backgroundColor: Colors.green,
-            title: Text(
+            title: const Text(
               "WhatsApp Status Saver",
               style: TextStyle(
                 fontWeight: FontWeight.bold,
-                foreground: Paint(),
+                color: Colors.white,
               ),
             )),
         body: pages[nav.currentIndex],
         bottomNavigationBar: BottomNavigationBar(
+            selectedItemColor: Colors.white,
             backgroundColor: Colors.green,
             onTap: (value) {
               nav.changeIndex(value);

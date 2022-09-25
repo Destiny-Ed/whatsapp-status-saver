@@ -20,11 +20,11 @@ class _VideoViewState extends State<VideoView> {
   List<Widget> buttonsList = const [
     Icon(
       Icons.download,
-      color: Colors.green,
+      color: Colors.white,
     ),
     Icon(
       Icons.share,
-      color: Colors.green,
+      color: Colors.white,
     ),
   ];
 
@@ -67,6 +67,7 @@ class _VideoViewState extends State<VideoView> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: List.generate(buttonsList.length, (index) {
               return FloatingActionButton(
+                backgroundColor: Colors.green,
                 heroTag: "$index",
                 onPressed: () {
                   switch (index) {
