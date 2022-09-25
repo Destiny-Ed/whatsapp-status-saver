@@ -26,10 +26,34 @@ class GetStatusProvider extends ChangeNotifier {
     }
 
     if (status.isGranted) {
-      final directory = Directory(AppConstants.WHATSAPP_PATH);
+      final whatsappBusinessDirectory =
+          Directory(AppConstants.WHATSAPP_BUSINESS_PATH);
+      final whatsappDirectory = Directory(AppConstants.WHATSAPP_PATH);
+      if (whatsappDirectory.existsSync()) {
+        final items = whatsappDirectory.listSync();
 
-      if (directory.existsSync()) {
-        final items = directory.listSync();
+        if (ext == ".mp4") {
+          _getVideos =
+              items.where((element) => element.path.endsWith(".mp4")).toList();
+          notifyListeners();
+        } else {
+          _getImages =
+              items.where((element) => element.path.endsWith(".jpg")).toList();
+          notifyListeners();
+        }
+
+        _isWhatsappAvailable = true;
+        notifyListeners();
+
+        log(items.toString());
+      } else {
+        log("No whatsapp found");
+        _isWhatsappAvailable = false;
+        notifyListeners();
+      }
+
+      if (whatsappBusinessDirectory.existsSync()) {
+        final items = whatsappBusinessDirectory.listSync();
 
         if (ext == ".mp4") {
           _getVideos =
