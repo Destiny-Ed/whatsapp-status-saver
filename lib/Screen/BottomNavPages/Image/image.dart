@@ -18,53 +18,54 @@ class _ImageHomePageState extends State<ImageHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Colors.white70,
         body: Consumer<GetStatusProvider>(builder: (context, file, child) {
-      if (_isFetched == false) {
-        file.getStatus(".jpg");
-        Future.delayed(const Duration(microseconds: 1), () {
-          _isFetched = true;
-        });
-      }
-      return file.isWhatsappAvailable == false
-          ? const Center(
-              child: Text("Whatsapp not available"),
-            )
-          : file.getImages.isEmpty
+          if (_isFetched == false) {
+            file.getStatus(".jpg");
+            Future.delayed(const Duration(microseconds: 1), () {
+              _isFetched = true;
+            });
+          }
+          return file.isWhatsappAvailable == false
               ? const Center(
-                  child: Text("No image available"),
+                  child: Text("Whatsapp not available"),
                 )
-              : Container(
-                  padding: const EdgeInsets.all(20),
-                  child: GridView(
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 2,
-                            crossAxisSpacing: 8,
-                            mainAxisSpacing: 8),
-                    children: List.generate(file.getImages.length, (index) {
-                      final data = file.getImages[index];
-                      return GestureDetector(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            CupertinoPageRoute(
-                                builder: (_) => ImageView(
-                                      imagePath: data.path,
-                                    )),
+              : file.getImages.isEmpty
+                  ? const Center(
+                      child: Text("No image available"),
+                    )
+                  : Container(
+                      padding: const EdgeInsets.all(20),
+                      child: GridView(
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 2,
+                                crossAxisSpacing: 8,
+                                mainAxisSpacing: 8),
+                        children: List.generate(file.getImages.length, (index) {
+                          final data = file.getImages[index];
+                          return GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                CupertinoPageRoute(
+                                    builder: (_) => ImageView(
+                                          imagePath: data.path,
+                                        )),
+                              );
+                            },
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  color: Colors.black,
+                                  image: DecorationImage(
+                                      fit: BoxFit.cover,
+                                      image: FileImage(File(data.path))),
+                                  borderRadius: BorderRadius.circular(10)),
+                            ),
                           );
-                        },
-                        child: Container(
-                          decoration: BoxDecoration(
-                              color: Colors.amber,
-                              image: DecorationImage(
-                                  fit: BoxFit.cover,
-                                  image: FileImage(File(data.path))),
-                              borderRadius: BorderRadius.circular(10)),
-                        ),
-                      );
-                    }),
-                  ),
-                );
-    }));
+                        }),
+                      ),
+                    );
+        }));
   }
 }

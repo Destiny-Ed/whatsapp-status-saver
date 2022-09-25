@@ -16,9 +16,15 @@ class ImageView extends StatefulWidget {
 class _ImageViewState extends State<ImageView> {
   ///list of buttons
   List<Widget> buttonsList = const [
-    Icon(Icons.download),
-    Icon(Icons.print),
-    Icon(Icons.share),
+    Icon(Icons.download, color: Colors.green),
+    Icon(
+      Icons.print,
+      color: Colors.green,
+    ),
+    Icon(
+      Icons.share,
+      color: Colors.green,
+    ),
   ];
 
   @override
