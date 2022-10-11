@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:status_saver/Provider/bottom_nav_provider.dart';
@@ -18,8 +20,20 @@ class _MainActivityState extends State<MainActivity> {
   Widget build(BuildContext context) {
     return Consumer<BottomNavProvider>(builder: (context, nav, child) {
       return Scaffold(
+        appBar: AppBar(
+            elevation: 5,
+            backgroundColor: Colors.green,
+            title: const Text(
+              "WhatsApp Status Saver",
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+              ),
+            )),
         body: pages[nav.currentIndex],
         bottomNavigationBar: BottomNavigationBar(
+            selectedItemColor: Colors.white,
+            backgroundColor: Colors.green,
             onTap: (value) {
               nav.changeIndex(value);
             },

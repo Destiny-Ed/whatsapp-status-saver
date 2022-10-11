@@ -16,14 +16,24 @@ class ImageView extends StatefulWidget {
 class _ImageViewState extends State<ImageView> {
   ///list of buttons
   List<Widget> buttonsList = const [
-    Icon(Icons.download),
-    Icon(Icons.print),
-    Icon(Icons.share),
+    Icon(
+      Icons.download,
+      color: Colors.white,
+    ),
+    Icon(
+      Icons.print,
+      color: Colors.white,
+    ),
+    Icon(
+      Icons.share,
+      color: Colors.white,
+    ),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       body: Container(
         decoration: BoxDecoration(
           color: Colors.grey,
@@ -37,6 +47,7 @@ class _ImageViewState extends State<ImageView> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: List.generate(buttonsList.length, (index) {
               return FloatingActionButton(
+                backgroundColor: Colors.green,
                 heroTag: "$index",
                 onPressed: () async {
                   switch (index) {

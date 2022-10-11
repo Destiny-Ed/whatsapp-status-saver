@@ -18,8 +18,14 @@ class VideoView extends StatefulWidget {
 class _VideoViewState extends State<VideoView> {
   ///list of buttons
   List<Widget> buttonsList = const [
-    Icon(Icons.download),
-    Icon(Icons.share),
+    Icon(
+      Icons.download,
+      color: Colors.white,
+    ),
+    Icon(
+      Icons.share,
+      color: Colors.white,
+    ),
   ];
 
   ChewieController? _chewieController;
@@ -35,7 +41,6 @@ class _VideoViewState extends State<VideoView> {
         autoInitialize: true,
         autoPlay: true,
         looping: true,
-        aspectRatio: 5 / 6,
         errorBuilder: ((context, errorMessage) {
           return Center(
             child: Text(errorMessage),
@@ -54,6 +59,7 @@ class _VideoViewState extends State<VideoView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       body: Chewie(controller: _chewieController!),
       floatingActionButton: Padding(
         padding: const EdgeInsets.only(left: 25),
@@ -61,6 +67,7 @@ class _VideoViewState extends State<VideoView> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: List.generate(buttonsList.length, (index) {
               return FloatingActionButton(
+                backgroundColor: Colors.green,
                 heroTag: "$index",
                 onPressed: () {
                   switch (index) {
