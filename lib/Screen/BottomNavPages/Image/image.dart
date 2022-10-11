@@ -19,7 +19,8 @@ class _ImageHomePageState extends State<ImageHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.white70,
-        body: Consumer<GetStatusProvider>(builder: (context, file, child) {
+        body: Consumer<GetStatusProvider>(
+          builder: (context, file, child) {
           if (_isFetched == false) {
             file.getStatus(".jpg");
             Future.delayed(const Duration(microseconds: 1), () {

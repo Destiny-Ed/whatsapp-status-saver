@@ -43,6 +43,7 @@ dependencies:
   share_plus: ^4.1.0
   flutter_native_api: ^0.0.1
   video_thumbnail: ^0.5.3
+  google_mobile_ads: ^2.0.1
 
 dev_dependencies:
   flutter_test:
